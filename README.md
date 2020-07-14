@@ -7,8 +7,8 @@
 https://fangbicheng.github.io/web-reduction
 
 ## 界面预览
-![](https://github.com/fangbicheng/web-reduction/blob/master/screenshots/reduction-list.png)
-![](https://github.com/fangbicheng/web-reduction/blob/master/screenshots/reduction-detail.png)
+<img src="https://github.com/fangbicheng/web-reduction/blob/master/screenshots/reduction-list.png"  height="375" width="667">
+<img src="https://github.com/fangbicheng/web-reduction/blob/master/screenshots/reduction-detail.png"  height="375" width="667">
 
 ## 代码目录
 ```bash
@@ -36,7 +36,10 @@ https://fangbicheng.github.io/web-reduction
 |   --- App.js                              ---组件入口文件
 |   --- main.js                             ---项目主文件
 --- .test                                   ---单元测试文件目录
+--- .babelrc                                ---babel配置文件
 --- .eslintrc                               ---eslint配置文件
+--- .travis.yml                             ---travis打包与部署脚本
+--- index.html                              ---首页
 --- package.json
 ```
 
