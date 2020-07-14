@@ -1,5 +1,5 @@
 <template>
-  <div class="detail-wrap">
+  <div v-if="isShowPage" class="detail-wrap">
     <div class="header">
       <div>{{detail.title}}</div>
       <div class="company">{{detail.company}}</div>
@@ -42,6 +42,7 @@
 
 <script>
 import moment from 'moment';
+import { isEmpty } from 'lodash';
 import api from '@/api';
 import MyDialog from '@/components/Dialog';
 
@@ -62,6 +63,9 @@ export default {
     };
   },
   computed: {
+    isShowPage() {
+      return !isEmpty(this.detail);
+    },
     status() {
       return statusMap[this.detail.status];
     },
@@ -78,18 +82,22 @@ export default {
   },
   filters: {
     date(val) {
-      return moment(val).format('YYYY-MM-DD HH:mm');
+      return val ? moment(val).format('YYYY-MM-DD HH:mm') : '';
     },
   },
   methods: {
     getReductionDetail() {
+      this.$loading.show();
       api.reduction.getReductionDetail(this.$route.params.id)
         .then((res) => {
-          if (res.status === 200 && res.data) {
-            this.detail = res.data;
-          }
+          if (res.data) this.detail = res.data;
         })
-        .catch();
+        .catch((err) => {
+          this.$toast(err.data.msg);
+        })
+        .finally(() => {
+          this.$loading.hide();
+        });
     },
     operate() {
       this.isShow = true;
@@ -99,22 +107,29 @@ export default {
     onConfirm() {
       const id = this.$route.params.id;
       this.isShow = false;
+      this.$loading.show();
       if (this.isOpen) {
         api.reduction.close(id)
           .then((res) => {
-            if (res.status === 200) {
-              this.getReductionDetail(id);
-            }
+            if (res.data) this.getReductionDetail(id);
           })
-          .catch();
+          .catch((err) => {
+            this.$toast(err.data.msg);
+          })
+          .finally(() => {
+            this.$loading.hide();
+          });
       } else {
         api.reduction.open(id)
           .then((res) => {
-            if (res.status === 200) {
-              this.getReductionDetail(id);
-            }
+            if (res.data) this.getReductionDetail(id);
           })
-          .catch();
+          .catch((err) => {
+            this.$toast(err.data.msg);
+          })
+          .finally(() => {
+            this.$loading.hide();
+          });
       }
     },
     onCancel() {
@@ -159,12 +174,12 @@ export default {
 .item {
   display: flex;
   padding: 2px;
-  .item-title {
+  &-title {
     width: 16%;
     margin-right: 18px;
     color: rgba(0, 0, 0, 0.3);
   }
-  .item-value {
+  &-value {
     display: block;
     flex: 1;
   }

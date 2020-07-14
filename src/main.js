@@ -3,6 +3,11 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import toast from './plugins/Toast';
+import loading from './plugins/Loading';
+
+Vue.use(toast);
+Vue.use(loading);
 
 Vue.config.productionTip = false;
 

@@ -31,13 +31,19 @@ export default {
   },
   methods: {
     getReductionList() {
+      this.$loading.show();
       api.reduction.getReductions()
         .then((res) => {
           if (res.status === 200 && res.data) {
             this.reductionList = res.data;
           }
         })
-        .catch();
+        .catch((err) => {
+          this.$toast(err.data.msg);
+        })
+        .finally(() => {
+          this.$loading.hide();
+        });
     },
     onItemClick(item) {
       this.$router.push({
