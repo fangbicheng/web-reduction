@@ -4,7 +4,8 @@
       <div class="weui-cells">
         <a
           class="weui-cell weui-cell_active weui-cell_access weui-cell_example"
-          v-for="item in reductionList" :key="item.id"
+          v-for="item in reductionList"
+          :key="item.id"
           @click="onItemClick(item)"
           href="javascript:"
           >
@@ -20,7 +21,6 @@
 </template>
 
 <script>
-import 'weui';
 import api from '@/api';
 
 export default {

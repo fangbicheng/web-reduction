@@ -3,6 +3,8 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+// eslint-disable-next-line
+import 'weui';
 import toast from './plugins/Toast';
 import loading from './plugins/Loading';
 

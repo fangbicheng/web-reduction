@@ -7,9 +7,11 @@
 https://fangbicheng.github.io/web-reduction
 
 ## 界面预览
+![](https://github.com/fangbicheng/web-reduction/blob/master/screenshots/reduction-list.png)
+![](https://github.com/fangbicheng/web-reduction/blob/master/screenshots/reduction-detail.png)
 
 ## 代码目录
-```js
+```bash
 +-- build/                                  ---打包配置
 +-- config/                                 ---环境设置
 +-- node_modules/                           ---npm下载文件
@@ -39,7 +41,7 @@ https://fangbicheng.github.io/web-reduction
 ```
 
 ## 技术栈
-```js
+```bash
 语言：HTML、CSS、ES6
 预处理器：Less
 框架：Vue
@@ -53,7 +55,7 @@ CI：Travis
 ```
 
 ## 总体架构
-![] 
+![](https://github.com/fangbicheng/web-reduction/blob/master/screenshots/architecture.png)
 
 ## 开发与运行
 

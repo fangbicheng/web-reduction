@@ -1,9 +1,11 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
+import Loading from '@/plugins/Loading';
 import ReductionDetail from '@/pages/ReductionDetail';
 
 const localVue = createLocalVue();
 localVue.use(VueRouter);
+localVue.use(Loading);
 const router = new VueRouter();
 const wrapper = shallowMount(ReductionDetail, {
   localVue,
@@ -21,7 +23,17 @@ describe('ReductionDetail', () => {
     expect(defaultData.isShow).toBe(false);
     expect(defaultData.dialogContent).toBe('');
   });
-  it('弹窗是否正常', async () => {
+  it('数据响应是否正常', () => {
+    wrapper.setData({
+      detail: { id: 1 },
+      isShow: true,
+      dialogContent: 'test',
+    });
+    expect(wrapper.vm.detail).toEqual({ id: 1 });
+    expect(wrapper.vm.isShow).toBe(true);
+    expect(wrapper.vm.dialogContent).toBe('test');
+  });
+  it('点击打开弹窗是否正常', async () => {
     wrapper.find('div.open').trigger('click');
     await wrapper.vm.$nextTick();
     expect(wrapper.vm.isShow).toBe(true);
