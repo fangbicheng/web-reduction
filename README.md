@@ -7,8 +7,8 @@
 https://fangbicheng.github.io/web-reduction
 
 ## 界面预览
-<img src="https://github.com/fangbicheng/web-reduction/blob/master/screenshots/reduction-list.png"  height="375" width="667">
-<img src="https://github.com/fangbicheng/web-reduction/blob/master/screenshots/reduction-detail.png"  height="375" width="667">
+<img src="https://github.com/fangbicheng/web-reduction/blob/master/screenshots/reduction-list.png"  width="375" height="667">
+<img src="https://github.com/fangbicheng/web-reduction/blob/master/screenshots/reduction-detail.png" width="375" height="667">
 
 ## 代码目录
 ```bash
